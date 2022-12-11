@@ -1,0 +1,31 @@
+body{
+  background-color: var(--gray---gray-50);
+}
+html{
+  overflow: hidden;
+}
+.l-app{
+  display: grid;
+  grid-template-columns: max-content 1fr ;
+  grid-template-rows:56px auto ;
+  grid-template-areas:
+   " header header header header"
+    "side-nav app-body app-body app-body" ;
+  height: var(--app-height);
+  overflow: hidden;
+  background-color: var(--gray---gray-50);
+  &__body{
+    grid-area: app-body;
+    //height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    //min-height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    padding:0 var(--space--md);
+    overflow: auto;
+  }
+  &__side-nav{
+    grid-area: side-nav;
+    //height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    //min-height: calc(#{var(--app-height)} - #{var(--header--height)} );
+    overflow: auto;
+  }
+}
+
