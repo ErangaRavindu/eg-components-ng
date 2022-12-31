@@ -6,10 +6,13 @@ $table-cell-min-width: 20rem;
   align-content: flex-start;
   width: max-content;
   min-width: 100%;
+  background-color: var(--mono---white);
   &__wrapper{
     width: 100%;
     align-self: stretch;
     overflow: auto;
+    border: 1px solid var(--gray---gray-200);
+    border-radius: var(--coner--xs);
   }
 }
 .l-table-header{
@@ -89,7 +92,8 @@ $table-cell-min-width: 20rem;
   min-width: max-content;
   table-layout: auto;
 
-  &__header-cell{
+  &__header-cell, th{
+    text-align: left;
     padding: var(--space--smd) var(--space--mlg);
     background: var(--gray---gray-50);
     font: var(--desktop---x-samll-medium);
@@ -98,11 +102,12 @@ $table-cell-min-width: 20rem;
     text-transform: uppercase;
     border-collapse: collapse;
   }
-  &__cell{
+  &__cell, td{
+    text-align: left;
     padding: var(--space--md) var(--space--mlg);
     background: var(--mono---white);
     font: var(--desktop---base-regular);
-    color: var(--green---green-700);
+    color: var(--gray---gray-800--p);
     border-bottom: 1px solid var(--gray---gray-200);
     border-collapse: collapse;
     vertical-align: top;
@@ -130,13 +135,15 @@ $table-cell-min-width: 20rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--space--msm) var(--space--mlg);
+  padding: var(--space--md) var(--space--mlg);
   gap: 10px;
   border-bottom: 1px solid var(--gray---gray-200);
+  background-color: var(--mono---white);
   &__search{
     margin-bottom: 0;
     border: none;
     box-shadow: none;
+    flex: 1;
   }
   &__container{
     display: flex;

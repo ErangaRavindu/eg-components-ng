@@ -101,6 +101,68 @@
   </div>
   <eg-divider></eg-divider>
   <div class="l-page-section">
+  <div class='l-page-section__heading '>
+    <div class='l-page-section__title-wrapper'>
+      <h5>Form elements</h5>
+    </div>
+    <div class='l-page-section__actions' >
+
+    </div>
+  </div>
+  <div class="l-page-section__content">
+    <app-form-field>
+      <label>Text input</label>
+      <input appInputRef eg-input />
+    </app-form-field>
+    <app-form-field>
+      <label>Text input</label>
+      <input [value]="datepickerControl.value | date" appInputRef eg-input />
+      <button libModalToggle  [modal]="datepickerModal" type="button" aria-haspopup="dialog" aria-owns="datepicker-calendar"><eg-icon icon="calendar-event-line"></eg-icon></button>
+      <lib-modal #datepickerModal>
+        <lib-calendar [formControl]="datepickerControl"
+                      id="datepicker-calendar"
+        ></lib-calendar>
+      </lib-modal>
+    </app-form-field>
+    <app-form-field>
+      <label>Search field</label>
+      <eg-icon egPrifix icon="search-line"></eg-icon>
+      <input appInputRef eg-input type="search" />
+    </app-form-field>
+    <eg-select
+      id="test-id"
+      label="Label"
+      placeholder="Select an option"
+    >
+      <label>Select input</label>
+      <eg-select-option value="Iconic options">Option 1</eg-select-option>
+      <eg-select-option value="Iconic options">Option 2</eg-select-option>
+      <eg-select-option value="Iconic options">Option 3</eg-select-option>
+      <eg-select-option value="Iconic options">Option 4</eg-select-option>
+      <eg-select-option value="Iconic options">Option 5</eg-select-option>
+      <eg-select-option value="Iconic options">Option 6</eg-select-option>
+      <eg-select-option value="Iconic options">Option 7</eg-select-option>
+      <eg-select-option value="Iconic options">Option 8</eg-select-option>
+      <eg-select-option value="Iconic options">Option 9</eg-select-option>
+      <eg-select-option value="Iconic options">Option 10</eg-select-option>
+      <eg-select-option value="Iconic options">Option 11</eg-select-option>
+      <eg-select-option value="Iconic options">Option 12</eg-select-option>
+    </eg-select>
+    <app-form-field>
+      <label>Textarea</label>
+      <textarea appInputRef eg-input id="w3review" name="w3review" rows="4" cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+    </textarea>
+    </app-form-field>
+
+    <div class="select-container">
+
+  </div>
+
+  </div>
+
+</div>
+  <eg-divider></eg-divider>
+  <div class="l-page-section">
     <div class='l-page-section__heading '>
       <div class='l-page-section__title-wrapper'>
         <h5>Form elements</h5>
@@ -109,30 +171,15 @@
 
       </div>
     </div>
-    <div class="l-page-section__content">
-      <app-form-field>
-        <label>Label</label>
-        <input appInputRef eg-input />
-      </app-form-field>
-      <app-form-field>
-        <label>Label</label>
-        <eg-icon egPrifix icon="search-line"></eg-icon>
-        <input appInputRef eg-input type="search" />
-      </app-form-field>
-      <app-form-field>
-        <label>Label</label>
-        <select appInputRef eg-input  name="cars" id="cars">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </app-form-field>
-      <app-form-field>
-        <label>Label</label>
-        <textarea appInputRef eg-input id="w3review" name="w3review" rows="4" cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-    </textarea>
-      </app-form-field>
+    <div class="l-page-section__content"  >
+      <button [dropdownTriggerFor]='dropdown' color="default"   size='large' egIconButton><eg-icon  icon="more-2-fill"></eg-icon></button>
+      <button [dropdownTriggerFor]='dropdown' color="default"   size='medium' egButton>Dropmenu</button>
+      <eg-dropmenu #dropdown>
+        <planflex-menu-item>Menu item 1</planflex-menu-item>
+        <planflex-menu-item>Menu item 2</planflex-menu-item>
+        <planflex-menu-item>Menu item 3</planflex-menu-item>
+        <planflex-menu-item>Menu item 4</planflex-menu-item>
+      </eg-dropmenu>
     </div>
 
   </div>
@@ -148,58 +195,8 @@
     </div>
     <div class="l-page-section__content">
       <div class="l-table__container">
-        <div class="l-table-config">
-          <div class="l-table-config__container">
-            <div class="" style="position: relative">
-              <button >Filters</button>
-            </div>
-          </div>
-          <div class="l-table-config__container">
-            <div class="c-badge-list" >
-              <div class="c-badge c-badge-blue invert-true">Permissions: Indexing, History<span class="material-symbols-outlined">close</span></div>
-              <div class="c-badge c-badge-blue invert-true">Permissions: Indexing, History<span class="material-symbols-outlined">close</span></div>
-              <div class="c-badge c-badge-blue invert-true">Permissions: Indexing, History<span class="material-symbols-outlined">close</span></div>
-            </div>
-          </div>
-        </div>
         <div class="l-table__wrapper">
-          <table class="l-raw-table">
-            <thead>
 
-            <td width="6.4px" class="l-raw-table__header-cell l-raw-table__checkbox-cell">
-
-              <eg-checkbox></eg-checkbox>
-            </td>
-            <td class="l-raw-table__header-cell">NAME</td>
-            <td class="l-raw-table__header-cell">Permissions</td>
-            <td class="l-raw-table__header-cell">Permissions</td>
-            <td class="l-raw-table__header-cell l-raw-table__button-cell"></td>
-
-            </thead>
-            <tbody>
-            <tr>
-              <td width="6.4rem"  class="l-raw-table__cell l-raw-table__checkbox-cell">
-                <eg-checkbox></eg-checkbox>
-              </td>
-              <td class="l-raw-table__cell">
-                <eg-avatar [labels]="true"  size="medium" text="Eranga ravindu Gunawardana" supportingText="eranga.ravindu@gmail.com" ></eg-avatar>
-              </td>
-              <td class="l-raw-table__cell">
-                sample text
-              </td>
-              <td class="l-raw-table__cell">
-                <div class="c-badge-list" style="max-width: 640px">
-                  <eg-badge color="blue" [invert]="true" [removable]="true">Badge</eg-badge>
-                </div>
-              </td>
-              <td class="l-raw-table__cell l-raw-table__button-cell">
-                <div class="btn-group">
-                  <button egIconButton color="default"  size='small'  ><eg-icon  icon="more-2-fill"></eg-icon></button>
-                </div>
-              </td>
-            </tr>
-            </tbody>
-          </table>
         </div>
 
       </div>

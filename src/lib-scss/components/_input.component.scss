@@ -18,7 +18,7 @@ $input-height: 4.4rem;
   &__label, label{
     display: flex;
     font: var(--desktop---x-samll-medium);
-    color: var(--gray---gray-500);
+    color: var(--gray---gray-800--p);
   }
   &__form-field-wrapper{
     display: flex;
@@ -48,6 +48,7 @@ $input-height: 4.4rem;
       color: var(--gray---gray-600);
     }
   }
+
   input, select, textarea{
     display: flex;
     background-color: var(--mono---white);
@@ -56,8 +57,6 @@ $input-height: 4.4rem;
     padding:0;
     box-shadow: none;
     flex: 1;
-
-
   }
   &__prefix{
     display: flex;
@@ -111,14 +110,42 @@ $input-height: 4.4rem;
 
 
 }
-select.eg-input__form-field {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: transparent;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' width='20' height='20'><path fill='none' d='M0 0h24v24H0z'/><path fill='gray' d='M12 13.172l4.95-4.95 1.414 1.414L12 16 5.636 9.636 7.05 8.222z'/></svg>");
-  background-repeat: no-repeat;
-  background-position-x:96%;
-  background-position-y: 8px;
+.eg-select-wrapper{
+  position: relative;
+}
+.eg-input-select {
+  &__form-field{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: var(--space--md);
+    background-color: var(--mono---white);
+    font: var(--desktop---base-regular);
+    border: 1px solid var(--gray---gray-300);
+    padding: var(--space--sm) var(--space--xl) var(--space--sm) var(--space--md);
+    box-shadow: var(--shadow-sm);
+    border-radius: 0.6rem;
+    gap: var(--space--smd);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    min-height:$input-height ;
+    &:focus:not(.disabled){
+      box-shadow: var(--focus-ring--primary);
+      + .eg-input-select__arrow{
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &__vlaue{
+     flex: 1;
+    flex-grow: 1;
+  }
+  &__arrow{
+    position: absolute;
+    right: 0.8rem;
+    top:  1rem;
+  }
 }
 .eg-input-hint{
   position: absolute;

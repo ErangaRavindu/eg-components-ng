@@ -12,12 +12,19 @@ import {AvatarModule} from './avatar/avatar.module';
 import {DividerModule} from './divider/divider.module';
 import {CheckboxModule} from './checkbox/checkbox.module';
 import {BadgeModule} from './badge/badge.module';
+import {MenuItemModule} from './menu-item/menu-item.module';
+import {DropmenuModule} from './dropmenu/dropmenu.module';
+import {SelectModule} from './select/select.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ModalModule} from './datepicker/date-picker-toggle/modal.module';
+import {CalendarModule} from './datepicker/calander/calendar.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FormFieldComponent,
-    InputRefDirective
+    InputRefDirective,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,14 @@ import {BadgeModule} from './badge/badge.module';
     AvatarModule,
     DividerModule,
     CheckboxModule,
-    BadgeModule
+    BadgeModule,
+    MenuItemModule,
+    DropmenuModule,
+    SelectModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ModalModule,
+    CalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
