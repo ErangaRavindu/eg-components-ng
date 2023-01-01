@@ -1,0 +1,78 @@
+<div class="l-page">
+  <div class="l-page-header">
+    <div class="l-page-header__wrapper">
+      <h1>Data tables</h1>
+    </div>
+  </div>
+  <div class="l-page-section">
+    <div class='l-page-section__heading '>
+      <div class='l-page-section__title-wrapper'>
+        <h4></h4>
+      </div>
+      <div class='l-page-section__actions' >
+
+      </div>
+    </div>
+    <div class="l-page-section__content">
+      <div class="l-table__container">
+        <div class="l-table-config">
+          <div class="l-table-config__container">
+            <button egButton color="tertiary" size="large">Filter</button>
+            <app-form-field class="l-table-config__search">
+              <eg-icon egPrifix icon="search-line"></eg-icon>
+              <input placeholder="Search" appInputRef eg-input type="search" />
+            </app-form-field>
+          </div>
+          <div class="c-badge-list">
+            <eg-badge color="blue" [removable]="true" [invert]="true">Filter: Value, jshhjfe, +5</eg-badge>
+          </div>
+        </div>
+        <div class="l-table__wrapper">
+          <table cdk-table [dataSource]="dataSource" class="l-raw-table">
+            <!-- Position Select -->
+            <ng-container cdkColumnDef="select">
+              <th cdk-header-cell *cdkHeaderCellDef>
+                <eg-checkbox
+                  id="seelct"
+                ></eg-checkbox>
+              </th>
+              <td cdk-cell *cdkCellDef="let element">
+                <eg-checkbox id="checkbox-{{ element.position }}"></eg-checkbox>
+              </td>
+            </ng-container>
+            <!-- Position Column -->
+            <ng-container cdkColumnDef="position">
+              <th cdk-header-cell *cdkHeaderCellDef> No. </th>
+              <td cdk-cell *cdkCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container cdkColumnDef="name">
+              <th cdk-header-cell *cdkHeaderCellDef> Name </th>
+              <td cdk-cell *cdkCellDef="let element">
+                <eg-avatar [labels]="true"  size="medium" text="  {{element.name}} " supportingText="  {{element.symbol}} " ></eg-avatar>
+
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container cdkColumnDef="weight">
+              <th cdk-header-cell *cdkHeaderCellDef> Weight </th>
+              <td cdk-cell *cdkCellDef="let element"> <eg-badge color="blue" [invert]="true">{{element.weight}}</eg-badge> </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container cdkColumnDef="symbol">
+              <th cdk-header-cell *cdkHeaderCellDef> Symbol </th>
+              <td cdk-cell *cdkCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

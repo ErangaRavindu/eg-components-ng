@@ -1,0 +1,28 @@
+<div class="l-page">
+  <div class="l-page-header">
+    <div class="l-page-header__wrapper">
+      <h1>Menu</h1>
+    </div>
+  </div>
+  <div class="l-page-section">
+    <div class='l-page-section__heading '>
+      <div class='l-page-section__title-wrapper'>
+        <h4>Basic</h4>
+      </div>
+      <div class='l-page-section__actions' >
+
+      </div>
+    </div>
+    <div class="l-page-section__content"  >
+      <button [dropdownTriggerFor]='dropdown' color="default"   size='large' egIconButton><eg-icon  icon="more-2-fill"></eg-icon></button>
+      <button [dropdownTriggerFor]='dropdown' color="default"   size='medium' egButton>Dropmenu</button>
+      <eg-dropmenu #dropdown>
+        <planflex-menu-item>Menu item 1</planflex-menu-item>
+        <planflex-menu-item>Menu item 2</planflex-menu-item>
+        <planflex-menu-item>Menu item 3</planflex-menu-item>
+        <planflex-menu-item>Menu item 4</planflex-menu-item>
+      </eg-dropmenu>
+    </div>
+
+  </div>
+</div>
