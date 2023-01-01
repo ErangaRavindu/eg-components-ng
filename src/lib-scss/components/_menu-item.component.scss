@@ -8,6 +8,7 @@
   font: var(--desktop---small-medium);
   color: var(--gray---gray-800--p);
   cursor: pointer;
+  max-height: 3.6rem;
   //border-radius: var(--coner--xs);
   &:hover{
     background-color: var(--gray---gray-100);

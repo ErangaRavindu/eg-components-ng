@@ -7,11 +7,15 @@ $table-cell-min-width: 20rem;
   width: max-content;
   min-width: 100%;
   background-color: var(--mono---white);
+  &__container{
+    border: 1px solid var(--gray---gray-200);
+    background-color: var(--mono---white);
+  }
   &__wrapper{
     width: 100%;
     align-self: stretch;
     overflow: auto;
-    border: 1px solid var(--gray---gray-200);
+
     border-radius: var(--coner--xs);
   }
 }
@@ -94,7 +98,7 @@ $table-cell-min-width: 20rem;
 
   &__header-cell, th{
     text-align: left;
-    padding: var(--space--smd) var(--space--mlg);
+    padding: var(--space--sm) var(--space--mlg);
     background: var(--gray---gray-50);
     font: var(--desktop---x-samll-medium);
     color: var(--gray---gray-500);
@@ -139,6 +143,7 @@ $table-cell-min-width: 20rem;
   gap: 10px;
   border-bottom: 1px solid var(--gray---gray-200);
   background-color: var(--mono---white);
+
   &__search{
     margin-bottom: 0;
     border: none;
@@ -149,7 +154,6 @@ $table-cell-min-width: 20rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    padding: 0px;
     gap: 2rem;
     flex: none;
     order: 0;

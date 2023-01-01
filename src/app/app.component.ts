@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { distinctUntilChanged, map, startWith } from 'rxjs/operators';
-import {startOfDay, toISODateString} from './datepicker/date-utils';
+import {startOfDay, toISODateString} from './lib/datepicker/date-utils';
+import {DataSource, SelectionModel} from '@angular/cdk/collections';
+import {BehaviorSubject, Observable} from 'rxjs';
+
+
 
 
 
@@ -11,13 +13,16 @@ import {startOfDay, toISODateString} from './datepicker/date-utils';
   selector: 'app-root',
   host: { class: 'l-app' },
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
 
-  columns = columns;
-  columnDefs = columnDefs;
-  dataSource$ = mockDataSource$;
+
+
+
+
+
+
 
   title = 'eg-components';
 
@@ -78,51 +83,14 @@ export class AppComponent {
       }
     });
   }
+
+
   selectToday() {
     this.dateControl.setValue(this.today);
   }
+
+
+
 }
 
-const columnDefs = [
-  {
-    cdkColumnDef: "name",
-    cdkColumnDefTitle: "Name"
-  },
-  {
-    cdkColumnDef: "lastName",
-    cdkColumnDefTitle: "Last Name"
-  },
-  {
-    cdkColumnDef: "age",
-    cdkColumnDefTitle: "Age"
-  }
-];
 
-const columns = ["name", "lastName", "age", "actions"];
-
-const mockDataSource$: Observable<any> = of([
-  {
-    id: 1,
-    name: "aaaaa",
-    age: 11,
-    lastName: "Whats up"
-  },
-  {
-    id: 2,
-    name: "aaaaa",
-    age: 12,
-    lastName: "Whats up"
-  },
-  {
-    id: 3,
-    name: "aaaaa",
-    age: 12,
-    lastName: "Whats up"
-  },
-  {
-    id: 4,
-    name: "aaaaa",
-    age: 12,
-    lastName: "Whats up"
-  }
-]);
