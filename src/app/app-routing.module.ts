@@ -33,6 +33,11 @@ const routes: Routes = [
       import('./examples/drop-menu-docs/drop-menu-docs.module').then(m => m.DropMenuDocsModule)
   },
   {
+    path: 'gantt',
+    loadChildren: () =>
+      import('./examples/gantt-docs/gantt-docs.module').then(m => m.GanttDocsModule)
+  },
+  {
     path: 'select',
     loadChildren: () =>
       import('./examples/select-docs/select-docs.module').then(m => m.SelectDocsModule)

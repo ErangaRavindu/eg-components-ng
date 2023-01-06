@@ -14,8 +14,11 @@
       </div>
     </div>
     <div class="l-page-section__content"  >
-      <button [dropdownTriggerFor]='dropdown' color="default"   size='large' egIconButton><eg-icon  icon="more-2-fill"></eg-icon></button>
-      <button [dropdownTriggerFor]='dropdown' color="default"   size='medium' egButton>Dropmenu</button>
+      <div class="btn-group">
+        <button [dropdownTriggerFor]='dropdown' color="tertiary"   size='medium' egButton>Dropmenu<eg-icon  icon="arrow-down-s-line"></eg-icon></button>
+        <button [dropdownTriggerFor]='dropdown' color="tertiary"   size='large' egIconButton><eg-icon  icon="more-2-fill"></eg-icon></button>
+      </div>
+
       <eg-dropmenu #dropdown>
         <planflex-menu-item>Menu item 1</planflex-menu-item>
         <planflex-menu-item>Menu item 2</planflex-menu-item>

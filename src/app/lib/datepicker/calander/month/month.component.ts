@@ -62,6 +62,7 @@ export class MonthComponent implements AfterViewInit, OnChanges {
 
   ngAfterViewInit() {
     this.changeDetectorRef.detach();
+    console.log(this.daysOfMonth);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

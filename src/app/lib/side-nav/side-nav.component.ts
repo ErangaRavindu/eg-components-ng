@@ -37,6 +37,10 @@ export class SideNavComponent {
         url: '/drop-menu',
         title: 'Dropmenu',
       },
+      {
+        url: '/gantt',
+        title: 'Gantt',
+      },
 
       {
         url: '/select',
