@@ -20,24 +20,44 @@
             <button egButton color="tertiary" size="large">Filter</button>
             <app-form-field class="l-table-config__search">
               <eg-icon egPrifix icon="search-line"></eg-icon>
-              <input placeholder="Search" appInputRef eg-input type="search" />
+              <input (keyup)="applyFilter($event)" placeholder="Search" appInputRef eg-input type="search" />
             </app-form-field>
+            <button [dropdownTriggerFor]='sortDropdown' color="tertiary"   size='large' egButton>Sort by<eg-icon  icon="arrow-down-s-line"></eg-icon></button>
+            <eg-dropmenu #sortDropdown>
+              <planflex-menu-item   appSort [data]="dataSource" sortBy="name" [ascending]="true">Sort by name</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="weight" [ascending]="true">Sort by Weight</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="position" [ascending]="true">Sort by position</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="symbol" [ascending]="true">Sort by Symbol</planflex-menu-item>
+            </eg-dropmenu>
           </div>
           <div class="c-badge-list">
             <eg-badge color="blue" [removable]="true" [invert]="true">Filter: Value, jshhjfe, +5</eg-badge>
           </div>
+
+        </div>
+        <div class="c-banner c-banner-info c-banner--inline invert-true" *ngIf="selection.selected.length > 0">
+          <div class="c-banner__content">
+            <div class="c-banner__message">You have Selected : {{selection.selected.length }}</div>
+          </div>
         </div>
         <div class="l-table__wrapper">
-          <table cdk-table [dataSource]="dataSource" class="l-raw-table">
+          <table cdk-table [dataSource]="dataSource " class="l-raw-table">
             <!-- Position Select -->
             <ng-container cdkColumnDef="select">
               <th cdk-header-cell *cdkHeaderCellDef>
                 <eg-checkbox
                   id="seelct"
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
                 ></eg-checkbox>
               </th>
               <td cdk-cell *cdkCellDef="let element">
-                <eg-checkbox id="checkbox-{{ element.position }}"></eg-checkbox>
+                <eg-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(element) : null"
+                  id="checkbox-{{ element.position }}"
+                  [checked]="selection.isSelected(element)"
+                ></eg-checkbox>
               </td>
             </ng-container>
             <!-- Position Column -->
@@ -51,7 +71,6 @@
               <th cdk-header-cell *cdkHeaderCellDef> Name </th>
               <td cdk-cell *cdkCellDef="let element">
                 <eg-avatar [labels]="true"  size="medium" text="  {{element.name}} " supportingText="  {{element.symbol}} " ></eg-avatar>
-
               </td>
             </ng-container>
 
@@ -71,6 +90,89 @@
             <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </div>
+        <app-paginator [rows]="10" [totalRecords]="dataSource.data.value.length" [pageLinkSize]="3"></app-paginator>
+      </div>
+    </div>
+    <div class="l-page-section__content">
+      <div class="l-table__container">
+        <div class="l-table-config">
+          <div class="l-table-config__container">
+            <button egButton color="tertiary" size="large">Filter</button>
+            <app-form-field class="l-table-config__search">
+              <eg-icon egPrifix icon="search-line"></eg-icon>
+              <input (keyup)="applyFilter($event)" placeholder="Search" appInputRef eg-input type="search" />
+            </app-form-field>
+            <button [dropdownTriggerFor]='sortDropdown' color="tertiary"   size='large' egButton>Sort by<eg-icon  icon="arrow-down-s-line"></eg-icon></button>
+            <eg-dropmenu #sortDropdown>
+              <planflex-menu-item   appSort [data]="dataSource" sortBy="name" [ascending]="true">Sort by name</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="weight" [ascending]="true">Sort by Weight</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="position" [ascending]="true">Sort by position</planflex-menu-item>
+              <planflex-menu-item  appSort [data]="dataSource" sortBy="symbol" [ascending]="true">Sort by Symbol</planflex-menu-item>
+            </eg-dropmenu>
+          </div>
+          <div class="c-badge-list">
+            <eg-badge color="blue" [removable]="true" [invert]="true">Filter: Value, jshhjfe, +5</eg-badge>
+          </div>
+
+        </div>
+        <div class="c-banner c-banner-info c-banner--inline invert-true" *ngIf="selection.selected.length > 0">
+          <div class="c-banner__content">
+            <div class="c-banner__message">You have Selected : {{selection.selected.length }}</div>
+          </div>
+        </div>
+        <div class="l-table__wrapper">
+          <table cdk-table [dataSource]="dataSource " class="l-raw-table">
+            <!-- Position Select -->
+            <ng-container cdkColumnDef="select">
+              <th cdk-header-cell *cdkHeaderCellDef>
+                <eg-checkbox
+                  id="seelct"
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                ></eg-checkbox>
+              </th>
+              <td cdk-cell *cdkCellDef="let element">
+                <eg-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="$event ? selection.toggle(element) : null"
+                  id="checkbox-{{ element.position }}"
+                  [checked]="selection.isSelected(element)"
+                ></eg-checkbox>
+              </td>
+            </ng-container>
+            <!-- Position Column -->
+            <ng-container cdkColumnDef="position">
+              <th cdk-header-cell *cdkHeaderCellDef> No. </th>
+              <td cdk-cell *cdkCellDef="let element" class="l-raw-table__cell--editable">
+                <input  placeholder="Search" appInputRef eg-input  type="text " value="{{element.position}} " />
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container cdkColumnDef="name">
+              <th cdk-header-cell *cdkHeaderCellDef> Name </th>
+              <td cdk-cell *cdkCellDef="let element" class="l-raw-table__cell--editable">
+                <input type="text " value="{{element.name}} "/>
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container cdkColumnDef="weight">
+              <th cdk-header-cell *cdkHeaderCellDef> Weight </th>
+              <td cdk-cell *cdkCellDef="let element"> <eg-badge color="blue" [invert]="true">{{element.weight}}</eg-badge> </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container cdkColumnDef="symbol">
+              <th cdk-header-cell *cdkHeaderCellDef> Symbol </th>
+              <td cdk-cell *cdkCellDef="let element"> {{element.symbol}} </td>
+            </ng-container>
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <app-paginator [rows]="10" [totalRecords]="dataSource.data.value.length" [pageLinkSize]="3"></app-paginator>
       </div>
     </div>
 

@@ -10,14 +10,14 @@ import { DataTableComponent } from './lib/data-table/data-table.component';
 import { SideNavComponent } from './lib/side-nav/side-nav.component';
 import {RippleModule} from './lib/ripple/ripple.module';
 
+
 @NgModule({
-  declarations: [
-    AppComponent,
+    declarations: [
+        AppComponent,
+        DataTableComponent,
+        SideNavComponent,
 
-    DataTableComponent,
-    SideNavComponent,
-
-  ],
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -25,8 +25,8 @@ import {RippleModule} from './lib/ripple/ripple.module';
         RippleModule,
         MenuItemModule,
     ],
-  providers: [],
+    providers: [],
 
-  bootstrap: [AppComponent]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
